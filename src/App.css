@@ -1,0 +1,16 @@
+table {
+  border-collapse: collapse;
+}
+
+tr > td {
+  border: solid 1px white;
+  width: 2em;
+  height: 2em;
+  font-size: 2em;
+  text-align: center;
+}
+
+tr > td.highlight {
+  color: green;
+  background-color: white;
+}
