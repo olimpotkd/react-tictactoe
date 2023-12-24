@@ -48,7 +48,7 @@ function App() {
   };
 
   const checkForWin = () => {
-    if (gameOver) {
+    if (gameOver || winner) {
       return;
     }
 
@@ -81,7 +81,7 @@ function App() {
 
     setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
 
-    if (playsLeft > 0) {
+    if (playsLeft > 1) {
       setPlaysLeft(playsLeft - 1);
     } else {
       setGameOver(true);
@@ -115,16 +115,16 @@ function App() {
   return (
     <>
       <h1>Tic tac toe</h1>
-      {winner ? (
-        <>
-          <h2>{winner} WINS!</h2>
-          <button type="button" onClick={restart}>
-            Start again
-          </button>
-        </>
+      {winner ? <h2>{winner} WINS!</h2> : null}
+      {gameOver ? <h2>Game over!</h2> : null}
+      {gameOver || winner ? (
+        <button type="button" onClick={restart}>
+          Start again
+        </button>
       ) : (
         <h2>Current player: {currentPlayer}</h2>
       )}
+
       <table>
         <tbody>
           {valueGrid.map((row, i) => (
